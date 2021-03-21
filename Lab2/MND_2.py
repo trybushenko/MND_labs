@@ -18,11 +18,9 @@ for i in range(len(y[0])):
     matrix[y_n] = np.array([j[i] for j in y])
 not_homogeneous = False
 
-
-m += 1 # кількість експериментів
-sigma_theta = np.sqrt((2 * (2 * m - 2))/(m * (m - 4)))
-
 while True:
+    m += 1 # кількість експериментів
+    sigma_theta = np.sqrt((2 * (2 * m - 2))/(m * (m - 4)))
     if not_homogeneous: # перевірка чи в попередню ітерацію дисперсії були однорідні чи ні
         y[m - 1] = [rn.randint(y_min, y_max) for i in range(3)]
         matrix["y" + str(m)] = y[m - 1]
