@@ -23,7 +23,7 @@ m += 1 # кількість експериментів
 sigma_theta = np.sqrt((2 * (2 * m - 2))/(m * (m - 4)))
 
 while True:
-    if not_homogeneous:
+    if not_homogeneous: # перевірка чи в попередню ітерацію дисперсії були однорідні чи ні
         y[m - 1] = [rn.randint(y_min, y_max) for i in range(3)]
         matrix["y" + str(m)] = y[m - 1]
 
@@ -70,12 +70,11 @@ while True:
 
     r_kr = 2
 
-    homogeneous = True
     for i in range(len(ruv)):
         if ruv[i] > r_kr:
             print("Неоднорідна дисперсія")
-            not_homogeneous = True
-            continue
+            not_homogeneous = True # дисперсія однорідна
+            continue # виконання циклу заново + додання нового y
     if homogeneous:
         print("Однорідна дисперсія")
 
