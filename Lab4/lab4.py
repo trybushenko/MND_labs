@@ -157,7 +157,7 @@ def lab4(m, n):
     Fp = Sad / sb
     F4 = n - d
     # перевірка за допомогою scipy та додаткового завдання
-    if Fp < f.ppf(q=0.95, dfn=F4, dfd=F3) or len(coef_1) <= len(coef_2):
+    if (Fp < f.ppf(q=0.95, dfn=F4, dfd=F3)) or (len(coef_1) <= len(coef_2)):
         print("Рівняння регресії адекватне при рівні значимості 0.05")
     else:
         print("Рівняння регресії неадекватне при рівні значимості 0.05")
