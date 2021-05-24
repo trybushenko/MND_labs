@@ -4,7 +4,7 @@ import sklearn.linear_model as lm
 from scipy.stats import f, t
 from functools import partial
 from pyDOE2 import *
-
+import time
 
 def regression(x, b):
     y = sum([x[i] * b[i] for i in range(len(x))])
@@ -182,6 +182,7 @@ def check(X, Y, B, n, m):
     print('Дисперсія y:', disp)
 
     Gp = kriteriy_cochrana(Y, y_aver, n, m)
+    start = time.time()
     print(f'Gp = {Gp}')
     if Gp < G_kr:
         print(f'З ймовірністю {1 - q} дисперсії однорідні.')
@@ -189,7 +190,8 @@ def check(X, Y, B, n, m):
         print("Необхідно збільшити кількість дослідів")
         m += 1
         main(n, m)
-
+    end = time.time()
+    print(f"Час перевірки однорідності дисперсії = {end - start} секунд")
     ts = kriteriy_studenta(X[:, 1:], Y, y_aver, n, m)
     print('\nКритерій Стьюдента:\n', ts)
     res = [t for t in ts if t > t_student]
